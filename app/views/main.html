@@ -1,0 +1,11 @@
+<div class="well">
+  <h3>Oscillator</h3>
+
+  <p>Volume</p>
+  <input type="range" min="0" max=".03" value="{{volume}}" step=".0005" ng-model="volume" ng-change="changeVolume(volume)"/>
+  <br>
+
+  <p>Type</p>
+  <select ng-model="type" ng-options="type for type in types" ng-change="changeType(type)"></select>
+
+</div>
