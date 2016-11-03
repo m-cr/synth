@@ -14,7 +14,7 @@ angular.module('synthApp')
 		
 
 		_gainNode.gain.value = 0.01;
-		_oscillator.frequency.value = 440;
+		_oscillator.frequency.value = 60;
 		_oscillator.type = 'square';
 
 		SynthFactory.oscillator = _oscillator;
