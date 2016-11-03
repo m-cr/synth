@@ -6,6 +6,10 @@ var path = require('path');
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use(function(req, res){
+	res.sendFile(path.join(__dirname, "/dist/index.html");
+});
+
 app.use(function (err, req, res, next) {
     console.error(err, typeof next);
     console.error(err.stack);
