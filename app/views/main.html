@@ -1,11 +1,33 @@
 <div class="well">
   <h3>Oscillator</h3>
 
-  <p>Volume</p>
+  <p>Volume: {{volume * (100/.03)}}</p>
   <input type="range" min="0" max=".03" value="{{volume}}" step=".0005" ng-model="volume" ng-change="changeVolume(volume)"/>
   <br>
 
-  <p>Type</p>
-  <select ng-model="type" ng-options="type for type in types" ng-change="changeType(type)"></select>
+  <p>Type: {{type}}</p>
+  <select ng-model="type" ng-options="t for t in types" ng-change="changeType(type)"></select>
+  <br><br>
+
+  <p>Oscillator Frequency: {{frequency}}</p>
+  <input type="range" min="20" max="1000" value="{{frequency}}" step="1" ng-model="frequency" ng-change="changeFrequency(frequency)"/>
+  <br>
+
+  <p>Filter Frequency: {{filter}}</p>
+  <input type="range" min="20" max="15000" value="{{filter}}" step="1" ng-model="filter" ng-change="filterFrequency(filter)"/>
+
+</div>
+
+<div class="well">
+  
+  <h3>LFO</h3>
+
+  <p>Rate: {{lfoRate}} </p>
+  <input type="range" min="0" max="10" value="{{lfoRate}}" step=".05" ng-model="lfoRate" ng-change="changeRate(lfoRate)"/>
+  <br>
+
+  <p>Type: {{lfoType}}</p>
+  <select ng-model="lfoType" ng-options="t for t in types" ng-change="changeLfoType(lfoType)"></select>
+  <br><br>
 
 </div>
