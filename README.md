@@ -1,5 +1,7 @@
 # synth
 
+An online synthesizer with one oscillator, one filter, and one LFO.
+
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
 
