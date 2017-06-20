@@ -1,8 +1,14 @@
 <div class="well">
+
+  <div class='pull-right'>
+    <button ng-show="volume !== 0" class="btn btn-default" ng-click="changeVolume(0); oldVolume = volume; volume=0;" type='submit'>Mute</button>
+    <button ng-show="volume === 0" class="btn btn-default" ng-click="changeVolume(oldVolume); volume = oldVolume;" type='submit'>Un-mute</button>
+  </div>
+
   <h3>Oscillator</h3>
 
   <p>Volume: {{Math.floor(volume * (50))}}</p>
-  <input type="range" min="0" max="2" value="{{volume}}" step=".005" ng-model="volume" ng-change="changeVolume(volume)"/>
+  <input type="range" min="0" max="3" value="{{volume}}" step=".005" ng-model="volume" ng-change="changeVolume(volume)"/>
   <br>
 
   <p>Type: {{type}}</p>
@@ -24,14 +30,13 @@
   <br><br>
 
   <p>Filter Frequency: {{filter}}</p>
-  <input type="range" min="20" max="15000" value="{{filter}}" step="1" ng-model="filter" ng-change="filterFrequency(filter)"/>
+  <input type="range" min="20" max="5000" value="{{filter}}" step="1" ng-model="filter" ng-change="filterFrequency(filter)"/>
 
 </div>
 
 <div class="well">
   <h3>LFO</h3>
   
-  <!-- <button ng-click='lfoToggle()'>On/Off</button> -->
   <p>Destination: {{dest}} </p>
   <select ng-model="dest" ng-options="d for d in dests" ng-change="changeLfo(dest)"></select>
   <br>

@@ -71,8 +71,12 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  .main {
+    margin-top: 30px;
+  }
+  
   .container {
-    max-width: 730px;
+    max-width: 500px;
   }
 
   /* Remove the padding we set earlier */
@@ -90,4 +94,8 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+h3 {
+  margin-top: 10px;
 }

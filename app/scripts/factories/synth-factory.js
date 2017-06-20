@@ -9,28 +9,28 @@ angular.module('synthApp')
 		var _oscillator = context.createOscillator();
 		var _gainNode = context.createGain();
 		var _filter = context.createBiquadFilter();
-		_filter.type = 'lowpass';
+		_filter.type = 'bandpass';
 		var _masterFilter = context.createBiquadFilter();
-		_filter.frequency.value = 300;
+		_filter.frequency.value = 1000;
 		_masterFilter.frequency.value = 5000;
 		var _masterGain = context.createGain();
 
 		
 
 		_gainNode.gain.value = 0.01;
-		_oscillator.frequency.value = 60;
-		_oscillator.type = 'sine';
+		_oscillator.frequency.value = 440;
+		_oscillator.type = 'square';
 		
 		var lfo = context.createOscillator();
-		lfo.frequency.value = 0;
-		lfo.type = 'sine';
+		lfo.frequency.value = 3;
+		lfo.type = 'sawtooth';
 
 
 		var modulationGain = context.createGain();
 		modulationGain.gain.value = 0.01;
 
 		var modulationFilter = context.createGain();
-		modulationFilter.gain.value = 1000;
+		modulationFilter.gain.value = 500;
 
 		lfo.connect(modulationGain);
 		lfo.connect(modulationFilter);
@@ -65,6 +65,8 @@ angular.module('synthApp')
 			}
 		};
 
+		SynthFactory.changeLfo('volume');
+
 		SynthFactory.stop = function(){
 			return _oscillator.stop();
 		};
@@ -94,12 +96,11 @@ angular.module('synthApp')
 		};
 
 		SynthFactory.changeVolume = function(value){
-		//	_gainNode.gain.value = value;
 			_masterGain.gain.value = value;
 		};
 
 		SynthFactory.changeRate = function(rate){
-			console.log(rate);
+			// console.log(rate);
 			lfo.frequency.value = rate;
 		};
 

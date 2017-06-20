@@ -17,7 +17,3 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(process.env.PORT || 9000);
-// var server = require('http').createServer(app);
-// server.listen(process.env.PORT || 9000, function(){
-// 	console.log('listening on port' + process.env.PORT);
-// });
