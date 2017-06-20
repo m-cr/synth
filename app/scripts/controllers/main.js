@@ -7,6 +7,7 @@
  * # MainCtrl
  * Controller of the synthApp
  */
+ 
 angular.module('synthApp')
   .controller('MainCtrl', function ($scope, Synth, $window) {
     $scope.Math = $window.Math;
@@ -15,9 +16,8 @@ angular.module('synthApp')
     $scope.type = 'square';
   	$scope.types = ['sine', 'square', 'sawtooth', 'triangle'];
     $scope.changeType = Synth.changeType;
-    $scope.frequency = 80;
+    $scope.frequency = 440;
     $scope.changeFrequency = Synth.changeFrequency;
-    // $scope.changeFrequency(440);
     $scope.volume = 1;
     $scope.changeVolume = Synth.changeVolume;
     $scope.changeVolume(1);
@@ -37,7 +37,7 @@ angular.module('synthApp')
     //LFO
     $scope.changeLfo = Synth.changeLfo;
     $scope.changeLfoType = Synth.changeLfoType;
-    $scope.dest = 'filter';
+    $scope.dest = 'volume';
     $scope.dests = ['filter', 'volume'];
     $scope.lfoRate = 3;
     $scope.lfoType = 'sawtooth';
