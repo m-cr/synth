@@ -9,19 +9,19 @@ angular.module('synthApp')
 		var _oscillator = context.createOscillator();
 		var _gainNode = context.createGain();
 		var _filter = context.createBiquadFilter();
-		_filter.type = 'bandpass';
+		_filter.type = 'lowpass';
 		var _masterFilter = context.createBiquadFilter();
 		_filter.frequency.value = 1000;
 		_masterFilter.frequency.value = 5000;
 		var _masterGain = context.createGain();
 
 		_gainNode.gain.value = 0.01;
-		_oscillator.frequency.value = 440;
+		_oscillator.frequency.value = 80;
 		_oscillator.type = 'square';
 		
 		var lfo = context.createOscillator();
 		lfo.frequency.value = 3;
-		lfo.type = 'sawtooth';
+		lfo.type = 'sine';
 
 
 		var modulationGain = context.createGain();

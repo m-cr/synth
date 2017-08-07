@@ -18,7 +18,7 @@ angular.module('synthApp')
         type: 'square',
         types: ['sine', 'square', 'sawtooth', 'triangle'],
         changeType: Synth.changeType,
-        frequency: 440,
+        frequency: 80,
         changeFrequency: Synth.changeFrequency,
         volume: Synth.volume,
         oldVolume: 0,
@@ -36,14 +36,14 @@ angular.module('synthApp')
 
     //filter
     var filter = {
-        type: 'bandpass',
+        type: 'lowpass',
         types: ['lowpass', 'highpass', 'bandpass', 'notch'],
         changeType: Synth.changeFilterType,
         step: function(freq){
           return (freq/1000);
         },
         changeFrequency: Synth.changeFilterFrequency,
-        frequency: 500
+        frequency: 1000
     };
     $scope.filter = filter;
 
@@ -54,7 +54,7 @@ angular.module('synthApp')
         dest: 'volume',
         destOptions: ['filter', 'volume'],
         rate: 3,
-        type: 'sawtooth'
+        type: 'sine'
     };
 
     $scope.lfo = lfo;
@@ -81,7 +81,7 @@ angular.module('synthApp')
         Synth.changeVolume(v);
         $scope.osc.volume = Synth.volume;
     };
-    volumeChange(1);
+    volumeChange(1.75);
     var volumeKnob = new Knob(volumeChange, 0, 3);
     volumeKnob.step = 0.005;
     $('#volumeKnob').knob(volumeKnob);
@@ -108,7 +108,8 @@ angular.module('synthApp')
         $scope.lfo.rate = v;
         Synth.changeRate(v);
     };
-    var lfoKnob = new Knob(lfoChange, 0, 100);
+    var lfoKnob = new Knob(lfoChange, 0, 15);
+    lfoKnob.step = .05;
     $('#lfoknob').knob(lfoKnob);
     $scope.$watch(
         'lfo.rate',
