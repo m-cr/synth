@@ -10,6 +10,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   padding: 0;
   background-image: url('https://66.media.tumblr.com/a0f44b15a4694a80c4bf0b6a4f72b95e/tumblr_n1ow3ynTrL1sns7veo1_500.gif'); 
@@ -25,18 +29,18 @@ body {
 }
 
 /* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
+// .header {
+//   border-bottom: 1px solid #e5e5e5;
+//   margin-bottom: 10px;
 
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
+//   Make the masthead heading the same height as the navigation
+//   h3 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     line-height: 40px;
+//     padding-bottom: 19px;
+//   }
+// }
 
 /* Custom page footer */
 .footer {
@@ -70,13 +74,13 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   .main {
     margin-top: 30px;
   }
   
   .container {
-    max-width: 33%;
+    max-width: 100%;
   }
 
   /* Remove the padding we set earlier */
@@ -86,30 +90,44 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
-  /* Space out the masthead */
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+
   .header {
+    height: 33vh;
     margin-bottom: 30px;
+    text-align: center;
+    color: white; 
+    padding: 12vh;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
   }
+
+  #synth-wrap {
+    display: flex;
+    flex-direction: row;
+  }
+
 }
 
 h3 {
   margin-top: 10px;
 }
 
+
 .synth-component {
-  background-color: lightgrey;
+  color: white;
+  flex: 25;
   padding: 10px;
   margin: 10px;
 }
 
-.filter {
-
-}
-
-.lfo {
-
+.synth-component select {
+  background-color: transparent;
 }
