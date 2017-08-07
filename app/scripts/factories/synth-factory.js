@@ -15,8 +15,6 @@ angular.module('synthApp')
 		_masterFilter.frequency.value = 5000;
 		var _masterGain = context.createGain();
 
-		
-
 		_gainNode.gain.value = 0.01;
 		_oscillator.frequency.value = 440;
 		_oscillator.type = 'square';
@@ -48,10 +46,11 @@ angular.module('synthApp')
 		SynthFactory.filter = _filter;
 
 		SynthFactory.start = function(){
+			SynthFactory.volumeDisply = Math.floor(_masterGain.gain.value * 50);
 			return _oscillator.start();
 		};
 
-		SynthFactory.changeLfo = function(dest){
+		SynthFactory.changeLfoRouting = function(dest){
 			if(dest === 'filter'){
 				lfo.disconnect();
 				modulationGain.disconnect();
@@ -65,7 +64,7 @@ angular.module('synthApp')
 			}
 		};
 
-		SynthFactory.changeLfo('volume');
+		SynthFactory.changeLfoRouting('volume');
 
 		SynthFactory.stop = function(){
 			return _oscillator.stop();
@@ -87,7 +86,7 @@ angular.module('synthApp')
 			lfo.type = type;
 		};
 
-		SynthFactory.filterFrequency = function(frequency){
+		SynthFactory.changeFilterFrequency = function(frequency){
 			_filter.frequency.value = frequency;
 		};
 
@@ -97,10 +96,11 @@ angular.module('synthApp')
 
 		SynthFactory.changeVolume = function(value){
 			_masterGain.gain.value = value;
+			SynthFactory.volumeDisplay = Math.floor(value * (50));
+			console.log('synthfactory.volumeDisplay', SynthFactory.volumeDisplay);
 		};
 
 		SynthFactory.changeRate = function(rate){
-			// console.log(rate);
 			lfo.frequency.value = rate;
 		};
 

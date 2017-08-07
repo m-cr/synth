@@ -9,40 +9,51 @@
  */
  
 angular.module('synthApp')
-  .controller('MainCtrl', function ($scope, Synth, $window) {
-    $scope.Math = $window.Math;
-  	
+  .controller('MainCtrl', function ($scope, Synth) {
+
     //oscillator
-    $scope.type = 'square';
-  	$scope.types = ['sine', 'square', 'sawtooth', 'triangle'];
-    $scope.changeType = Synth.changeType;
-    $scope.frequency = 440;
-    $scope.changeFrequency = Synth.changeFrequency;
-    $scope.volume = 1;
-    $scope.changeVolume = Synth.changeVolume;
-    $scope.changeVolume(1);
+    var osc = {
+        type: 'square',
+        types: ['sine', 'square', 'sawtooth', 'triangle'],
+        changeType: Synth.changeType,
+        frequency: 440,
+        changeFrequency: Synth.changeFrequency,
+        volume: Synth.volumeDisplay,
+        changeVolume: function(val) {
+            Synth.changeVolume(val);
+            this.volume = Synth.volumeDisplay;   
+        }
+    };
+    $scope.osc = osc;
+    osc.changeVolume(1);
 
     //filter
-    $scope.filterType = 'bandpass';
-    $scope.filterTypes = ['lowpass', 'highpass', 'bandpass', 'notch'];
-    $scope.changeFilterType = Synth.changeFilterType;
-    $scope.step = function(frequency){
-      return (frequency/1000);
+    var filter = {
+        type: 'bandpass',
+        types: ['lowpass', 'highpass', 'bandpass', 'notch'],
+        changeType: Synth.changeFilterType,
+        step: function(freq){
+          return (freq/1000);
+        },
+        changeFrequency: Synth.changeFilterFrequency,
+        frequency: 500
     };
-    $scope.filterFrequency = Synth.filterFrequency;
-    $scope.filter = 500;
-    
-    Synth.oscillator.start();
+    $scope.filter = filter;
 
     //LFO
-    $scope.changeLfo = Synth.changeLfo;
-    $scope.changeLfoType = Synth.changeLfoType;
-    $scope.dest = 'volume';
-    $scope.dests = ['filter', 'volume'];
-    $scope.lfoRate = 3;
-    $scope.lfoType = 'sawtooth';
-    $scope.changeRate = Synth.changeRate;
+    var lfo = {
+        changeRouting: Synth.changeLfoRouting,
+        changeType: Synth.changeLfoType,
+        dest: 'volume',
+        destOptions: ['filter', 'volume'],
+        rate: 3,
+        type: 'sawtooth',
+        changeRate: Synth.changeRate
+    };
+
+    $scope.lfo = lfo;
 
     $scope.effectTypes = ['distortion', 'delay'];
 
+    Synth.start();
   });
