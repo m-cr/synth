@@ -62,21 +62,19 @@ angular.module('synthApp')
     $scope.lforate = 20;
 
     //knob class
-    class Knob {
-        constructor (onChange, min, max) {
-            this.angleOffset = -90;
-            this.height = 100;
-            this.change = onChange;
-            this.angleArc = 180;
-            this.min = min;
-            this.max = max;
-            this.fgColor = 'white';
-            this.bgColor = 'grey';
-            this.inputColor = 'grey';
-            this.cursor = 5;
-            this.displayInput = false;
-        }
-    }
+    var Knob = function(onChange, min, max) {
+        this.change = onChange;
+        this.min = min;
+        this.max = max;
+        this.angleOffset = -90;
+        this.height = 100;
+        this.angleArc = 180;
+        this.fgColor = 'white';
+        this.bgColor = 'grey';
+        this.inputColor = 'grey';
+        this.cursor = 5;
+        this.displayInput = false;
+    };
 
     //osc volume
     var volumeChange = function(v) {
