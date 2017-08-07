@@ -1,68 +1,56 @@
-<div class="well">
-
+<div class="synth-component amp">
+  
   <div class='pull-right'>
-    <button ng-show="volume !== 0" class="btn btn-default" 
-    ng-click="osc.changeVolume(0); oldVolume = volume; volume=0;" 
-    type='submit'>Mute</button>
-    <button ng-show="volume === 0" class="btn btn-default" 
-    ng-click="osc.changeVolume(oldVolume); volume = oldVolume;" 
-    type='submit'>Un-mute</button>
+    <button ng-show="osc.volume !== 0" class="btn btn-default" 
+    ng-click="osc.mute()" type='submit'>Mute</button>
+    <button ng-show="osc.volume === 0" class="btn btn-default" 
+    ng-click="osc.unMute();" type='submit'>Un-mute</button>
   </div>
+
+  <h3>Amp</h3>
+
+  <p>Level</p>
+  <input class="dial" id="volumeKnob" value="{{ osc.volume }}" />
+  
+</div>
+
+<div class="synth-component osc">
 
   <h3>Oscillator</h3>
 
-  <p>Volume: {{ osc.volume }}</p>
-  <input type="range"
-  min="0"
-  max="3"
-  value="{{ osc.volume }}"
-  step=".005"
-  ng-model="volume"
-  ng-change="osc.changeVolume(volume)"/>
-  <br>
+  <span>Type: </span>
+  <select ng-model="osc.type" ng-options="t for t in osc.types" 
+  ng-change="osc.changeType(osc.type)"></select>
 
-  <p>Type: {{osc.type}}</p>
-  <select ng-model="type" ng-options="t for t in osc.types" 
-  ng-change="osc.changeType(type)"></select>
-  <br><br>
-
-  <p>Oscillator Frequency: {{osc.frequency}}</p>
-  <input type="range" min="20" max="1000" value="{{osc.frequency}}" step="1" 
-  ng-model="frequency" ng-change="osc.changeFrequency(frequency)"/>
-  <br>
+  <p>Frequency</p>
+  <input class="dial" id="oscKnob" value="{{ osc.frequency }}" />
 
 </div>
 
-<div class="well">
+<div class="synth-component filter">
   
   <h3>Filter</h3>
 
-  <p>Type: {{filter.type}}</p>
+  <span>Type: </span>
   <select ng-model="filter.type" ng-options="t for t in filter.types" 
   ng-change="filter.changeType(filter.type)"></select>
-  <br><br>
 
-  <p>Filter Frequency: {{filter.frequency}}</p>
-  <input type="range" min="20" max="5000" value="{{filter.frequency}}" step="1" 
-  ng-model="filter.frequency" ng-change="filter.changeFrequency(filter.frequency)"/>
+  <p>Filter Frequency</p>
+  <input id="filterknob" value="{{ filter.frequency}}" class="dial" />
 
 </div>
 
-<div class="well">
+<div class="synth-component lfo">
   <h3>LFO</h3>
   
-  <p>Destination: {{lfo.dest}} </p>
+  <span>Destination: </span>
   <select ng-model="lfo.dest" ng-options="d for d in lfo.destOptions" 
   ng-change="lfo.changeRouting(lfo.dest)"></select>
-  <br>
-  
-  <p>Rate: {{lfo.rate}} </p>
-  <input type="range" min="0" max="100" value="{{lfo.rate}}" step="1" 
-  ng-model="lfo.rate" ng-change="lfo.changeRate(lfo.rate)"/>
-  <br>
-
-  <p>Type: {{lfo.type}}</p>
+  <br />
+  <span>Type: </span>
   <select ng-model="lfo.type" ng-options="t for t in osc.types" 
   ng-change="lfo.changeType(lfo.type)"></select>
-  <br>
+
+  <p>Rate</p>
+  <input id="lfoknob" value="{{ lfo.rate }}" class="dial" />
 </div>

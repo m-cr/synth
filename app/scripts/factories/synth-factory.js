@@ -46,7 +46,7 @@ angular.module('synthApp')
 		SynthFactory.filter = _filter;
 
 		SynthFactory.start = function(){
-			SynthFactory.volumeDisply = Math.floor(_masterGain.gain.value * 50);
+			SynthFactory.volume = _masterGain.gain.value;
 			return _oscillator.start();
 		};
 
@@ -96,8 +96,7 @@ angular.module('synthApp')
 
 		SynthFactory.changeVolume = function(value){
 			_masterGain.gain.value = value;
-			SynthFactory.volumeDisplay = Math.floor(value * (50));
-			console.log('synthfactory.volumeDisplay', SynthFactory.volumeDisplay);
+			SynthFactory.volume = value;
 		};
 
 		SynthFactory.changeRate = function(rate){

@@ -76,7 +76,7 @@ body {
   }
   
   .container {
-    max-width: 500px;
+    max-width: 33%;
   }
 
   /* Remove the padding we set earlier */
@@ -98,4 +98,18 @@ body {
 
 h3 {
   margin-top: 10px;
+}
+
+.synth-component {
+  background-color: lightgrey;
+  padding: 10px;
+  margin: 10px;
+}
+
+.filter {
+
+}
+
+.lfo {
+
 }
