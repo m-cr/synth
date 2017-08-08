@@ -6,9 +6,10 @@ angular.module('synthApp')
 		var SynthFactory = {};
 
 		// create context
+		/*jshint newcap:false */
 		var context;
 		if('webkitAudioContext' in $window) {
-	    context = new webkitAudioContext();
+	    context = new $window.webkitAudioContext();
 		} else {
 			context = new $window.AudioContext();
 		}

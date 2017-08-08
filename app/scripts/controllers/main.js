@@ -90,18 +90,18 @@ angular.module('synthApp')
     $('#volumeKnob').knob(volumeKnob);
     $scope.$watch(
         'osc.volume',
-        function (newValue, oldValue) {
+        function (newValue) {
             $('#volumeKnob').val(newValue).trigger('change');
         }
     );
 
-    //osc frequence
+    //osc frequency
     var oscFreqChange = Synth.changeOscFrequency;
     var oscKnob = new Knob(oscFreqChange, 20, 1000);
     $('#oscKnob').knob(oscKnob);
     $scope.$watch(
         'osc.frequency',
-        function (newValue, oldValue) {
+        function (newValue) {
             $('#oscKnob').val(newValue).trigger('change');
         }
     );
@@ -116,7 +116,7 @@ angular.module('synthApp')
     $('#lfoknob').knob(lfoKnob);
     $scope.$watch(
         'lfo.rate',
-        function (newValue, oldValue) {
+        function (newValue) {
             $('#lfoknob').val(newValue).trigger('change');
         }
     );
@@ -130,7 +130,7 @@ angular.module('synthApp')
     $('#filterknob').knob(filterKnob);
     $scope.$watch(
         'filter.frequency',
-        function (newValue, oldValue) {
+        function (newValue) {
             $('#filterknob').val(newValue).trigger('change');
         }
     );
