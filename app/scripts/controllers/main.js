@@ -10,6 +10,8 @@
  
 angular.module('synthApp')
   .controller('MainCtrl', function ($scope, Synth) {
+
+    $scope.start = Synth.start;
  
     $scope.knobValue = 71;
 
@@ -133,5 +135,4 @@ angular.module('synthApp')
         }
     );
 
-    Synth.start();
   });

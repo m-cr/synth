@@ -60,11 +60,6 @@ angular.module('synthApp')
 		_gainNode.connect(_masterGain);
 		_masterGain.connect(context.destination);
 
-		
-		// setInterval(function(){
-		// 	console.log('gain', modulationGain.gain.value);
-		// }, 50);
-
 		SynthFactory.start = function(){
 			SynthFactory.volume = _masterGain.gain.value;
 			return _oscillator.start();
