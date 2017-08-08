@@ -13,6 +13,7 @@ angular.module('synthApp')
  
     $scope.knobValue = 71;
 
+    $scope.gain = Synth.gain.gain.value;
     //oscillator
     var osc = {
         type: 'square',
@@ -93,7 +94,7 @@ angular.module('synthApp')
     );
 
     //osc frequence
-    var oscFreqChange = Synth.changeFrequency;
+    var oscFreqChange = Synth.changeOscFrequency;
     var oscKnob = new Knob(oscFreqChange, 20, 1000);
     $('#oscKnob').knob(oscKnob);
     $scope.$watch(
@@ -109,7 +110,7 @@ angular.module('synthApp')
         Synth.changeRate(v);
     };
     var lfoKnob = new Knob(lfoChange, 0, 15);
-    lfoKnob.step = .05;
+    lfoKnob.step = 0.05;
     $('#lfoknob').knob(lfoKnob);
     $scope.$watch(
         'lfo.rate',
