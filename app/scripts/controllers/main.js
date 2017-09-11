@@ -16,6 +16,7 @@ angular.module('synthApp')
     $scope.knobValue = 71;
 
     $scope.gain = Synth.gain.gain.value;
+    
     //oscillator
     var osc = {
         type: 'square',

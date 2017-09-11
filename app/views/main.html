@@ -1,15 +1,30 @@
+
 <div id="synth-wrap" class='pull-right'>
-  <button ng-click="start()" type="submit">Start</button>
+
+  <div style="flex-direction: column; margin: 20px;">
+    
+    <div>
+      
+      <button ng-click="start()" class="btn btn-default synth-button pull-right"
+        type="submit">Start</button>
+    
+    </div>
+    
+    <div>
+      
+      <button ng-show="osc.volume !== 0" class="btn btn-default synth-button pull-right" 
+      ng-click="osc.mute()" type='submit'>Mute</button>
+      
+      <button ng-show="osc.volume === 0" class="btn btn-default synth-button pull-right" 
+      ng-click="osc.unMute();" type='submit'>Un-mute</button>
+    
+    </div>
+
+  </div>
+
   <div style="flex-direction: column">
     
     <div class="synth-component amp">
-      
-      <div class='pull-right'>
-        <button ng-show="osc.volume !== 0" class="btn btn-default" 
-        ng-click="osc.mute()" type='submit'>Mute</button>
-        <button ng-show="osc.volume === 0" class="btn btn-default" 
-        ng-click="osc.unMute();" type='submit'>Un-mute</button>
-      </div>
 
       <h3>Amp</h3>
 

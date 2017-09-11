@@ -131,3 +131,15 @@ h3 {
 .synth-component select {
   background-color: transparent;
 }
+
+.synth-button {
+  color: white;
+  font-size: 20px;
+  background-color:  transparent;
+  border: 0;
+}
+
+.synth-button:hover {
+  background-color: black;
+  color: white;
+}
